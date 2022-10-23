@@ -134,8 +134,8 @@ module Kitchen
         end
 
         info("Destroying GCE instance <#{server_name}>...")
-        wait_for_operation(connection.delete_instance(project, zone, server_name))
-        info("GCE instance <#{server_name}> destroyed.")
+        connection.delete_instance(project, zone, server_name)
+        info("GCE instance <#{server_name}> destroying in the background.")
 
         state.delete(:server_name)
         state.delete(:hostname)
